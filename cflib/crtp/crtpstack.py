@@ -41,6 +41,7 @@ class CRTPPort:
     Lists the available ports for the CRTP.
     """
     CONSOLE = 0x00
+    SENSOR = 0x01
     PARAM = 0x02
     COMMANDER = 0x03
     MEM = 0x04
