@@ -12,12 +12,13 @@ import cflib.crazyflie
 from cflib.crtp.crtpstack import CRTPPacket
 from cflib.crtp.crtpstack import CRTPPort
 
-
 def scan_for_crazyflies():
     """
     Scan for available crazyflies
     """
     cflib.crtp.init_drivers()
+    # scan_interfaces returns a list of lists where the first
+    # element of each sublist is the crazyflie's uri
     available = cflib.crtp.scan_interfaces()
     return available
 
@@ -26,7 +27,7 @@ def incoming(packet):
     Callback for data received from the copter. This gets
     called when a message from SENSOR port is received
     """
-    # This might be done prettier ;-)
+    # Log data of the received message to the terminal
     print("Message received:")
     print("Header: " + str(packet.header))
     # We know that the current answer is a float so
@@ -47,8 +48,9 @@ def main():
     pk = CRTPPacket()
     pk.port = CRTPPort.SENSOR
     # Fill it with dummy data. Eventually this should
-    # be changed by the ID of the sensor
+    # be changed by the ID of the sensor we want to query
     pk.data = struct.pack('<B', 1)
+    # log data to terminal
     print("Sending message:")
     print("Header: " + str(pk.header))
     print("Data: " + str(pk.data))
