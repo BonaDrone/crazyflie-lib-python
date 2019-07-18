@@ -24,7 +24,8 @@ def scan_for_crazyflies():
 
 def incoming(packet):
     """
-    Callback for data received from the copter. This gets
+    Callback that gets executed when data is received 
+    from the drone. This particular function gets
     called when a message from SENSOR port is received
     """
     # Log data of the received message to the terminal
