@@ -32,7 +32,8 @@ def incoming(packet):
     print("Header: " + str(packet.header))
     # We know that the current answer is a float so
     # this unpack shouldn't fail.
-    print("Data: " + str(struct.unpack('<f', packet.data)[0]))
+    print("Sensor ID: " + str(packet.data[0]))
+    print("Data: " + str(struct.unpack('<f', packet.data[1:])[0]))
     print("\n")
 
 def main():
@@ -49,7 +50,7 @@ def main():
     pk.port = CRTPPort.SENSOR
     # Fill it with dummy data. Eventually this should
     # be changed by the ID of the sensor we want to query
-    pk.data = struct.pack('<B', 1)
+    pk.data = struct.pack('<B', int(sys.argv[1]))
     # log data to terminal
     print("Sending message:")
     print("Header: " + str(pk.header))
