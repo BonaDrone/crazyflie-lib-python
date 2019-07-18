@@ -38,6 +38,10 @@ def incoming(packet):
     print("\n")
 
 def main():
+    """
+    Function that gets exceuted when this script is 
+    the execution entry point
+    """
     found_cfies = scan_for_crazyflies()
     if len(found_cfies) == 0:
         print("No Crazyflies found")
