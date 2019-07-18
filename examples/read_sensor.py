@@ -48,8 +48,7 @@ def main():
     # Create packet aimed at the SENSOR port
     pk = CRTPPacket()
     pk.port = CRTPPort.SENSOR
-    # Fill it with dummy data. Eventually this should
-    # be changed by the ID of the sensor we want to query
+    # Get the target sensor ID from command line arguments
     pk.data = struct.pack('<B', int(sys.argv[1]))
     # log data to terminal
     print("Sending message:")
