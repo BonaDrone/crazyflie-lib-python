@@ -38,6 +38,9 @@ def incoming(packet):
 
 def main():
     found_cfies = scan_for_crazyflies()
+    if len(found_cfies) == 0:
+        print("No Crazyflies found")
+        return
     # Create Crazyflie instance
     cf = cflib.crazyflie.Crazyflie(rw_cache='./cache')
     cf.add_port_callback(CRTPPort.SENSOR, incoming)
