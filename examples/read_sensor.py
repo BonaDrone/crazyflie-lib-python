@@ -52,6 +52,7 @@ def main():
     # Connect to the first detected crazyflie
     # found_cfies[0][0] contains the uri of the drone
     cf.open_link(found_cfies[0][0])
+    print ("Conecting to crazyflie with uri: " + found_cfies[0][0])
     print("Link opened\n")
     # Create packet aimed at the SENSOR port
     pk = CRTPPacket()
